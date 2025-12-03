@@ -253,10 +253,10 @@ return () => {
               <p className="text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
                 Développeur Full Stack & Ingénieur Logiciel
               </p>
-               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+               {/* <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Passionné par la création d&apos;applications web et mobiles modernes avec React, Next.js et TypeScript. 
                 Je transforme les idées en solutions digitales performantes.
-              </p>
+              </p> */}
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
                Passionné par la création de solutions technologiques utiles et efficaces, je conçois, développe et contribue à la maintenance de systèmes informatiques adaptés aux besoins des entreprises, en mettant l’accent sur la performance, la fiabilité et la qualité.
               </p>

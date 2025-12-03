@@ -257,8 +257,11 @@ return () => {
                 Passionné par la création d&apos;applications web et mobiles modernes avec React, Next.js et TypeScript. 
                 Je transforme les idées en solutions digitales performantes.
               </p> */}
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+              {/* <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
                Passionné par la création de solutions technologiques utiles et efficaces, je conçois, développe et contribue à la maintenance de systèmes informatiques adaptés aux besoins des entreprises, en mettant l’accent sur la performance, la fiabilité et la qualité.
+              </p> */}
+               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+               Passionné par la création de solutions technologiques, je conçois et développe des systèmes informatiques, en mettant l’accent sur la performance, la fiabilité et la qualité.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#projets" className="relative px-8 py-4 text-gray-800 text-base font-semibold cursor-pointer flex items-center gap-2 justify-center">
@@ -647,8 +650,11 @@ return () => {
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
                 Travaillons Ensemble
               </h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
+              {/* <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
                 Je suis disponible pour des projets freelance et des opportunités de collaboration. 
+                N&apos;hésitez pas à me contacter pour discuter de votre projet !
+              </p> */}
+                <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-2xl mx-auto">
                 N&apos;hésitez pas à me contacter pour discuter de votre projet !
               </p>
               

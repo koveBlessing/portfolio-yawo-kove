@@ -251,7 +251,7 @@ return () => {
                 Yawo Blessing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">KOVE</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
-                Développeur Full Stack & Ingénieur Logiciel
+                Développeur Full Stack & Ingénieur en Informatique et Systemes
               </p>
                {/* <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Passionné par la création d&apos;applications web et mobiles modernes avec React, Next.js et TypeScript. 

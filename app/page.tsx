@@ -146,26 +146,55 @@ export default function Portfolio() {
 
     window.addEventListener('resize', handleResize);
 
-    const handleAnchorClick = (e: Event) => {
-      e.preventDefault();
-      const target = document.querySelector((e.target as HTMLAnchorElement).getAttribute('href') || '');
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    };
+    // const handleAnchorClick = (e: Event) => {
+    //   e.preventDefault();
+    //   const target = document.querySelector((e.target as HTMLAnchorElement).getAttribute('href') || '');
+    //   if (target) {
+    //     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    //   }
+    // };
 
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', handleAnchorClick);
-    });
+    // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    //   anchor.addEventListener('click', handleAnchorClick);
+    // });
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      cancelAnimationFrame(animationFrameId);
+    // return () => {
+    //   window.removeEventListener('resize', handleResize);
+    //   cancelAnimationFrame(animationFrameId);
       
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.removeEventListener('click', handleAnchorClick);
-      });
-    };
+    //   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    //     anchor.removeEventListener('click', handleAnchorClick);
+    //   });
+    // };
+    // Attendre que le DOM soit rendu avant d'attacher les événements
+const timer = setTimeout(() => {
+  const handleAnchorClick = (e: Event) => {
+    e.preventDefault();
+    const href = (e.currentTarget as HTMLAnchorElement).getAttribute('href');
+    if (href) {
+      const targetId = href.replace('#', '');
+      const target = document.getElementById(targetId);
+      if (target) {
+        const offset = 80; // Décalage pour le header
+        const targetPosition = target.offsetTop - offset;
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', handleAnchorClick);
+  });
+}, 100);
+
+return () => {
+  clearTimeout(timer);
+  window.removeEventListener('resize', handleResize);
+  cancelAnimationFrame(animationFrameId);
+};
   }, []);
 
   return (
@@ -204,7 +233,7 @@ export default function Portfolio() {
             download
             className="relative px-6 py-3 text-gray-800 text-base font-semibold cursor-pointer flex items-center gap-2"
           >
-            <Download className="w-4 h-4" />
+            <Download className="w-4 h-4 relative z-10" />
             <span className="relative z-10">CV</span>
             <div className="absolute inset-0 bg-white/60 backdrop-blur-lg backdrop-saturate-180 rounded-2xl border border-white/90 shadow-[0_8px_24px_rgba(0,0,0,0.1),inset_0_2px_0_rgba(255,255,255,1)] transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.15)]" />
           </a>
@@ -224,9 +253,12 @@ export default function Portfolio() {
               <p className="text-xl md:text-2xl text-gray-700 mb-4 leading-relaxed">
                 Développeur Full Stack & Ingénieur Logiciel
               </p>
-              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
                 Passionné par la création d&apos;applications web et mobiles modernes avec React, Next.js et TypeScript. 
                 Je transforme les idées en solutions digitales performantes.
+              </p>
+              <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+               Passionné par la création de solutions technologiques utiles et efficaces, je conçois, développe et contribue à la maintenance de systèmes informatiques adaptés aux besoins des entreprises, en mettant l’accent sur la performance, la fiabilité et la qualité.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="#projets" className="relative px-8 py-4 text-gray-800 text-base font-semibold cursor-pointer flex items-center gap-2 justify-center">
@@ -347,9 +379,13 @@ export default function Portfolio() {
                   ))}
                 </div>
                 <div className="flex gap-4">
-                  <span className="flex items-center gap-2 text-gray-600 font-medium">
+                  {/* <span className="flex items-center gap-2 text-gray-600 font-medium">
                     <Smartphone className="w-4 h-4" />
                     Version mobile disponible
+                  </span> */}
+                   <span className="flex items-center gap-2 text-gray-600 font-medium">
+                    <Globe className="w-4 h-4" />
+                    Version web disponible
                   </span>
                 </div>
               </div>
@@ -642,9 +678,9 @@ export default function Portfolio() {
 
               <div className="flex gap-4 justify-center mb-8">
                 {[
-                  { icon: Github, href: '#', label: 'GitHub' },
-                  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-                  { icon: Twitter, href: '#', label: 'Twitter' }
+                  // { icon: Github, href: '#', label: 'GitHub' },
+                  { icon: Linkedin, href: 'https://www.linkedin.com/in/yawoblessing-kove-ingenieur-systemesinformatiques', label: 'LinkedIn' },
+                  // { icon: Twitter, href: '#', label: 'Twitter' }
                 ].map((social, index) => (
                   <a 
                     key={index}
@@ -671,7 +707,7 @@ export default function Portfolio() {
                   className="relative px-8 py-4 text-gray-800 text-base font-semibold cursor-pointer flex items-center gap-2 justify-center"
                 >
                   <Download className="w-5 h-5" />
-                  <span className="relative z-10">Télécharger CV</span>
+                  <span className="relative z-10">Télécharger le CV</span>
                   <div className="absolute inset-0 bg-white/60 backdrop-blur-lg backdrop-saturate-180 rounded-2xl border border-white/80 shadow-[0_8px_24px_rgba(0,0,0,0.1),inset_0_2px_0_rgba(255,255,255,1)] transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,0,0,0.15)]" />
                 </a>
               </div>
